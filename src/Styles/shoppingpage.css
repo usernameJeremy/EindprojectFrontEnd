@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.winkelpage {
+    width: 100%;
+    background-color: beige;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.products {
+    border: 2px solid blue;
+    padding: 25px;
+}
+
+.shoppingpageimg{
+    max-width: 100%;
+
+}
