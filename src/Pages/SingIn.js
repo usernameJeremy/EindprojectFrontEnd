@@ -1,9 +1,44 @@
-import React, { useContext } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Components/context/AuthContext';
+import axios from "axios";
+
+
+
+const url = "http://localhost:8080"
+
+const authAxios = axios.create({
+    bareUrl: url,
+    headers: {
+        Authorization: `Bearer`,
+    },
+});
+
 
 function SignIn() {
     const { login } = useContext(AuthContext);
+
+
+    const [auth, setAuth] = useState([]);
+    const [error, setError] = useState(false);
+    const [Bearer , SetBearer] = useState("");
+
+        async function fetchData() {
+
+
+            try {
+                const response = await authAxios.get(`${url}/authenticate`);
+                setAuth(response);
+                console.log(response)
+            } catch(e) {
+                console.error(e);
+                setError(true);
+            }
+
+
+        }
+
+
 
     function handleSubmit(e) {
         e.preventDefault();

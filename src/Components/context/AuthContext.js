@@ -7,6 +7,8 @@ function AuthContextProvider({ children }) {
     const [isAuth, toggleIsAuth] = useState(false);
     const navigate = useNavigate();
 
+
+
     function login() {
         console.log('Gebruiker is ingelogd!');
         toggleIsAuth(true);
@@ -15,6 +17,8 @@ function AuthContextProvider({ children }) {
 
     function logout() {
         console.log('Gebruiker is uitgelogd!');
+        // localStorage.setItem('token', JWToken);
+        localStorage.clear();
         toggleIsAuth(false);
         navigate('/');
     }

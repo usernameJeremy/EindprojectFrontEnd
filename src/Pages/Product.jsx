@@ -18,8 +18,6 @@ function Product({name , weight, price, img, title }) {
                 </article>
             </section>
 
-
-
         </>
     );
 }
