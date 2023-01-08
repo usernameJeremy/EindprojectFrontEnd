@@ -17,7 +17,7 @@ function AuthContextProvider({ children }) {
 
     function logout() {
         console.log('Gebruiker is uitgelogd!');
-        // localStorage.setItem('token', JWToken);
+        // localStorage.setItem('token', JwtToken);
         localStorage.clear();
         toggleIsAuth(false);
         navigate('/');

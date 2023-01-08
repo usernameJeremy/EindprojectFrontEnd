@@ -4,9 +4,16 @@ import Footer from "../Components/footer/Footer";
 import "../Styles/Home.css";
 
 function Home() {
+
+    //Get request boodschappenlijstje
+    //post accepteren lijst (enkel als logged in state)
+    //
+
+
+
+
     return (
         <>
-
             <div className="outer-box">
                 <div className="inner-box">
             <div className="home">

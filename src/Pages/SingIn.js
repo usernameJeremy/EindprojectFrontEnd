@@ -5,31 +5,31 @@ import axios from "axios";
 
 
 
-const url = "http://localhost:8080"
 
-const authAxios = axios.create({
-    bareUrl: url,
-    headers: {
-        Authorization: `Bearer`,
-    },
-});
 
 
 function SignIn() {
+
+    const url = "http://localhost:8080"
     const { login } = useContext(AuthContext);
-
-
-    const [auth, setAuth] = useState([]);
     const [error, setError] = useState(false);
-    const [Bearer , SetBearer] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-        async function fetchData() {
-
+       const signIn = async  (e) => {
+            e.preventDefault();
 
             try {
-                const response = await authAxios.get(`${url}/authenticate`);
-                setAuth(response);
-                console.log(response)
+                const  response  = await axios.post(`${url}/authenticate`,{
+                    username: username,
+                    password: password
+                });
+                if (response.status === 200){
+                    console.log(response)
+                    localStorage.setItem('token', response.data.jwt);
+                    login();
+                }
+
             } catch(e) {
                 console.error(e);
                 setError(true);
@@ -37,9 +37,6 @@ function SignIn() {
 
 
         }
-
-
-
     function handleSubmit(e) {
         e.preventDefault();
         login();
@@ -52,22 +49,25 @@ function SignIn() {
 
             <form onSubmit={handleSubmit}>
                 <section>
-                    <label htmlFor="firstname-field">Voornaam</label>
+                    <label htmlFor="username-field">Username</label>
                     <input
-                        name="firstname"
-                        id="firstname-field"
+                        name="username"
+                        id="username-field"
                         type="text"
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </section>
                 <section>
-                    <label htmlFor="firstname-field">Wachtwoord</label>
+                    <label htmlFor="password-field">Wachtwoord</label>
                     <input
                         name="password"
                         id="password-field"
                         type="password"
+                        onChange={(e) => setPassword(e.target.value)}
                     />
+                    {error && <p className="error">Combinatie van emailadres en wachtwoord is onjuist</p>}
                 </section>
-                <button type="submit">Inloggen</button>
+                <button type="submit" onClick={signIn}>Inloggen</button>
             </form>
 
             <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>

@@ -7,9 +7,9 @@ import axios from "axios";
 
 // const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzYwMjc5NSwiaWF0IjoxNjcyNzM4Nzk1fQ.u_OC7W21W80HFhZyaMAonRMw1D20ENtOFB-zae_WXwo';
 
-
+//
 // const authAxios = axios.create({
-//     bareUrl: url,
+//    Url: url,
 //     headers: {
 //         Authorization: `Bearer ${bearerToken}`,
 //     },
@@ -25,15 +25,9 @@ function SignUp() {
     const [enabled] = useState(true);
     const [apikey] = useState("");
     const [email, setEmail] = useState("");
-
-    // const [name, setName] = useState('');
-    // const [lastname, setLastname] = useState('');
-    // const [address, setAddress] = useState('');
-
-
-    // name: name,
-    // lastName: lastname,
-    // adres: address
+    const [name, setName] = useState('');
+    const [lastName, setLastname] = useState('');
+    const [address, setAddress] = useState('');
 
         async function Registreer() {
 
@@ -44,9 +38,15 @@ function SignUp() {
                     enabled: enabled,
                     apikey: apikey,
                     email: email
-
                 });
-                console.log(response.data)
+                console.log(response)
+                if(response.status === 201){
+                    await axios.put(`${url}/accounts/${username}`, {
+                        name: name,
+                        lastName: lastName,
+                        address: address
+                    });
+                }
 
             } catch(e) {
                 console.error(e);
@@ -55,32 +55,19 @@ function SignUp() {
 
 
 
-        async function test() {
-
-            try {
-                const response2 = await axios.get(`${url}/users`)
-                console.log(response2);
-            } catch (e) {
-                console.error(e);
-            }
-        }test()
 
 
-
-
-
-    // name:// ${name},
-    // lastName: ${lastname}
-    // adres: ${address}
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log(`
     username: ${username},
-    password: ${password},
     email: ${email},
     enabled: ${enabled},
     apikey: ${apikey}
+     name: ${name},
+    lastName: ${lastName}
+    address: ${address}
     `);
     }
 
@@ -121,38 +108,38 @@ function SignUp() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </section>
-                {/*<section>*/}
-                {/*    <label htmlFor="name-field">name</label>*/}
-                {/*    <input*/}
-                {/*        name="name"*/}
-                {/*        id="name-field"*/}
-                {/*        type="text"*/}
-                {/*        value={name}*/}
-                {/*        onChange={(e) => setName(e.target.value)}*/}
-                {/*    />*/}
-                {/*</section>*/}
-                {/*<section>*/}
-                {/*    <label htmlFor="lastname-field">lastname</label>*/}
-                {/*    <input*/}
-                {/*        name="lastname"*/}
-                {/*        id="lastname-field"*/}
-                {/*        type="text"*/}
-                {/*        value={lastname}*/}
-                {/*        onChange={(e) => setLastname(e.target.value)}*/}
-                {/*    />*/}
-                {/*</section>*/}
-                {/*<section>*/}
-                {/*    <label htmlFor="address-field">address</label>*/}
-                {/*    <input*/}
-                {/*        name="address"*/}
-                {/*        id="address-field"*/}
-                {/*        type="text"*/}
-                {/*        value={address}*/}
-                {/*        onChange={(e) => setAddress(e.target.value)}*/}
-                {/*    />*/}
-                {/*</section>*/}
+                <section>
+                    <label htmlFor="name-field">name</label>
+                    <input
+                        name="name"
+                        id="name-field"
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </section>
+                <section>
+                    <label htmlFor="lastname-field">lastname</label>
+                    <input
+                        name="lastname"
+                        id="lastname-field"
+                        type="text"
+                        value={lastName}
+                        onChange={(e) => setLastname(e.target.value)}
+                    />
+                </section>
+                <section>
+                    <label htmlFor="address-field">address</label>
+                    <input
+                        name="address"
+                        id="address-field"
+                        type="text"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                    />
+                </section>
 
-                <button type="submit" onClick={Registreer}>Registreren</button>
+                <button type="submit" onClick={Registreer}  on>Registreren</button>
             </form>
             <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
         </>

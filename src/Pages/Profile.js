@@ -1,22 +1,52 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+
 
 function Profile() {
+
+//get request gegevens account
+// get reqeust rekening (alleen als berzorgverzoek is geacepteerd)
+
+
+    const url = "http://localhost:8080"
+    const [username, setUsername] = useState("");
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [address, setAddress] = useState("");
+    const [details, setdetails] = useState("");
+
+
+
+    const [accountData, setAccountData] = useState([]);
+    const [error, setError] = useState(false);
+
+        async function fetchProfileData() {
+
+            try {
+                const data = await axios.get(`${url}/accounts${username}`);
+                setAccountData(accountData);
+                console.log(data)
+            } catch (e) {
+                console.error(e);
+                setError(true);
+            }
+        }
+
+
+
     return (
         <>
             <h1>Profielpagina</h1>
             <section>
                 <h2>Gegevens</h2>
-                <p><strong>Voornaam:</strong> hardcoded-voornaam</p>
-                <p><strong>Achternaam:</strong> hardcoded-Achternaam</p>
-                <p><strong>Postcode:</strong> hardcoded-Postcode</p>
-                <p><strong>straatnaam:</strong> hardcoded-straatnaam</p>
-                <p><strong>huisnummer:</strong> hardcoded-huisnummer</p>
-                {/*<button type="radiobutton" ></button>*/}
-                {/*<button type="radiobutton" ></button>*/}
+                <p><strong>UserName:</strong> username</p>
+                <p><strong>Naam:</strong> name</p>
+                <p><strong>Achternaam:</strong> lastname</p>
+                <p><strong>Address:</strong> address</p>
             </section>
             <section>
-                <h2>Strikt geheime profiel-content</h2>
+                <h2>Boodschappenlijst</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
             </section>
             <p>Terug naar de <Link to="/">Homepagina</Link></p>
