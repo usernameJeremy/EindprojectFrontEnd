@@ -10,18 +10,19 @@ import {useContext, useEffect, useState} from "react";
 import Home from "./Pages/Home";
 import Appie from "./Pages/Winkelpagina/Appie";
 import Laidel from "./Pages/Winkelpagina/Laidel";
+import './index.css'
 import axios from "axios";
 
 
-const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzYwMjc5NSwiaWF0IjoxNjcyNzM4Nzk1fQ.u_OC7W21W80HFhZyaMAonRMw1D20ENtOFB-zae_WXwo';
-const url = "http://localhost:8080"
-
-const authAxios = axios.create({
-    bareUrl: url,
-    headers: {
-        Authorization: `Bearer ${bearerToken}`,
-    },
-});
+// const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzYwMjc5NSwiaWF0IjoxNjcyNzM4Nzk1fQ.u_OC7W21W80HFhZyaMAonRMw1D20ENtOFB-zae_WXwo';
+// const url = "http://localhost:8080"
+//
+// const authAxios = axios.create({
+//     bareUrl: url,
+//     headers: {
+//         Authorization: `Bearer ${bearerToken}`,
+//     },
+// });
 
 function App() {
     const { isAuth } = useContext(AuthContext);
@@ -38,6 +39,7 @@ function App() {
           <Routes>
                <Route path="/" element={<Home/>} />
                <Route path="/profile" element={isAuth ? <Profile/> : <Navigate to="/"/>}/>
+              {/*<Route path="/Boodschaplijstje" element={isAuth}/>*/}
                <Route path="/appie" element={<Appie/>}/>
                <Route path="/signin" element={<SignIn/>} />
                <Route exact path="/signup" element={<SignUp/>} />

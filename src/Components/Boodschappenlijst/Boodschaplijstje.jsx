@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import axios from "axios";
 import product from "../../Pages/Product";
+import Home from "../../Pages/Home";
+import {Link} from "react-router-dom";
+import {AuthContext} from "../context/AuthContext";
 
 function Boodschaplijstje(props) {
 
+
+    const { isAuth } = useContext(AuthContext);
 //post request met lijst en gebruiker (enkel te bereiken via logged in state)
     const url = "http://localhost:8080"
     const [name, setName] = useState("");
@@ -25,7 +30,7 @@ function Boodschaplijstje(props) {
                name: name,
              address : address,
              products: product,
-            bezorginstructies: bezorginstructies,
+            bezorginstructies: bezorgInstructies,
             dateTime: dateTime
             });
 
@@ -43,6 +48,10 @@ function Boodschaplijstje(props) {
 
     return (
         <>
+            <header>
+                <Link to={Home}>Homepage</Link>
+            </header>
+            <div className="outer-box">
         <section>
         <label htmlFor="name-field">${name}</label>
         <input
@@ -83,7 +92,8 @@ function Boodschaplijstje(props) {
                     onChange={(e) => setBezorgInstructies(e.target.value)}
                 />
             </section>
-
+            <button type="button" onClick={PostList}>Send</button>
+            </div>
 
 
 

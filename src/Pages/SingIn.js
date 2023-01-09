@@ -67,7 +67,7 @@ function SignIn() {
                     />
                     {error && <p className="error">Combinatie van emailadres en wachtwoord is onjuist</p>}
                 </section>
-                <button type="submit" onClick={signIn}>Inloggen</button>
+                <button className="button" type="submit" onClick={signIn}>Inloggen</button>
             </form>
 
             <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>

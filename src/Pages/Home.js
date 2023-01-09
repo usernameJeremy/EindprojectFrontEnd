@@ -2,12 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from "../Components/footer/Footer";
 import "../Styles/Home.css";
+import axios from "axios";
+import '../index.css'
 
 function Home() {
+    const url = "http://localhost:8080"
+    //Get request boodschappenlijstje (met link naar boodschappenlijst en wanneer er op knop acepteren geklikt word redirect naar login )
+    async function groceryList() {
+        try{
+        const getLists = await axios.get(`${url}/grocerylists`)
 
-    //Get request boodschappenlijstje
-    //post accepteren lijst (enkel als logged in state)
-    //
+        console.log(getLists.data[0])
+
+
+    } catch(e) {
+        console.log(e)
+    }
+
+}
+
 
 
 
@@ -29,10 +42,13 @@ function Home() {
 
                 <p className="text-home">Klik hier onder op de link van uw favoriete supermarkt</p>
             </section>
+                    <section>
+                        {/*{groceryList}//////checken of dit werkt lijst toevoegen*/}
+                    </section>
             <section className="home">
-                 <Link to="/profile">Profielpagina</Link>
-                <Link to="/appie">Naar de Appie</Link>
-                <Link to="/laidel">Naar de Laidel</Link>
+                <Link className="button" to="/profile">Profielpagina</Link>
+                <Link className="button" to="/appie">Naar de Appie</Link>
+                <Link className="button" to="/laidel">Naar de Laidel</Link>
                 <p>Je kunt ook <Link to="/signin">inloggen</Link> of jezelf <Link to="/signup">registeren</Link> als je nog geen
                     account hebt.</p>
             </section>

@@ -1,13 +1,15 @@
 import React, {useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import "../Styles/Singup.css"
+import Footer from "../Components/footer/Footer";
+import '../index.css'
 
 
 
 
 // const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzYwMjc5NSwiaWF0IjoxNjcyNzM4Nzk1fQ.u_OC7W21W80HFhZyaMAonRMw1D20ENtOFB-zae_WXwo';
 
-//
 // const authAxios = axios.create({
 //    Url: url,
 //     headers: {
@@ -53,11 +55,6 @@ function SignUp() {
             }
         }
 
-
-
-
-
-
     function handleSubmit(e) {
         e.preventDefault();
         console.log(`
@@ -74,10 +71,13 @@ function SignUp() {
 
     return (
         <>
-            <h1>Registreren</h1>
-            <p>Wilt u ook gebruik maken van die handige Boodschappen bezorg app? Registreer uzelf nu!! </p>
-            <form onSubmit={handleSubmit}>
-                <section>
+
+            <div className="outer-box">
+                <div className="inner-box">
+            <h1 className="register">Registreren</h1>
+            <p className="register">Wilt u ook gebruik maken van die handige Boodschappen bezorg app? Registreer uzelf nu!! </p>
+            <form className="register" onSubmit={handleSubmit}>
+                <section className="register">
                     <label htmlFor="firstname-field">username</label>
                     <input
                         name="username"
@@ -88,7 +88,7 @@ function SignUp() {
                     />
                 </section>
 
-                <section>
+                <section className="register">
                     <label htmlFor="lastname-field">password</label>
                     <input
                         name="password"
@@ -98,7 +98,7 @@ function SignUp() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </section>
-                <section>
+                <section className="register">
                     <label htmlFor="email-field">E-mail</label>
                     <input
                         name="email"
@@ -108,7 +108,7 @@ function SignUp() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </section>
-                <section>
+                <section className="register">
                     <label htmlFor="name-field">name</label>
                     <input
                         name="name"
@@ -118,7 +118,7 @@ function SignUp() {
                         onChange={(e) => setName(e.target.value)}
                     />
                 </section>
-                <section>
+                <section className="register">
                     <label htmlFor="lastname-field">lastname</label>
                     <input
                         name="lastname"
@@ -128,7 +128,7 @@ function SignUp() {
                         onChange={(e) => setLastname(e.target.value)}
                     />
                 </section>
-                <section>
+                <section className="register">
                     <label htmlFor="address-field">address</label>
                     <input
                         name="address"
@@ -139,9 +139,13 @@ function SignUp() {
                     />
                 </section>
 
-                <button type="submit" onClick={Registreer}  on>Registreren</button>
+                <button className="button" type="submit" onClick={Registreer}>Registreren</button>
             </form>
-            <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
+            <p className="register">Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
+
+                </div>
+            </div>
+            <Footer/>
         </>
     );
 }

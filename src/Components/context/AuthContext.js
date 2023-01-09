@@ -11,13 +11,14 @@ function AuthContextProvider({ children }) {
 
     function login() {
         console.log('Gebruiker is ingelogd!');
+         // localStorage.setItem('token',"jwt");
         toggleIsAuth(true);
         navigate('/profile');
     }
 
     function logout() {
         console.log('Gebruiker is uitgelogd!');
-        // localStorage.setItem('token', JwtToken);
+
         localStorage.clear();
         toggleIsAuth(false);
         navigate('/');

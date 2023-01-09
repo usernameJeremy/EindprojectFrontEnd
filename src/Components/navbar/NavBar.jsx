@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import "../../Styles/Navbar.css"
+import '../../index.css'
 
 function NavBar() {
     const { isAuth, logout } = useContext(AuthContext);
@@ -10,7 +11,7 @@ function NavBar() {
     return (
 
         <nav>
-            <Link to="/">
+            <Link className="button" to="/">
           <span className="logo-container">
 
             <h3>
@@ -21,7 +22,7 @@ function NavBar() {
 
             <div className="navButton">
             {isAuth ?
-                <button
+                <button className="button"
                     type="button"
                     onClick={logout}
                 >
@@ -29,13 +30,13 @@ function NavBar() {
                 </button>
                 :
                 <div>
-                    <button
+                    <button className="button"
                         type="button"
                         onClick={() => navigate('/signin')}
                     >
                         Log in
                     </button>
-                    <button
+                    <button className="button"
                         type="button"
                         onClick={() => navigate('/signup')}
                     >
