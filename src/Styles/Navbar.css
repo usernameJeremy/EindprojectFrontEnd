@@ -12,6 +12,6 @@
 }
 .navButton{
     flex-direction: row;
-    align-content: flex-start;
+    align-content: center;
 
 }

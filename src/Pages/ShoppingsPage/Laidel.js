@@ -1,10 +1,11 @@
 import React from 'react';
-import Product from "../Product";
+import Product from "../../Components/Product/Product";
 import laidel from "../../asset/Laidel.png"
 import picanha from "../../asset/picanha.jpeg"
 import walnoten from "../../asset/walnoten.jpeg"
 import Zalm from "../../asset/Zalm.jpeg"
 import "../../Styles/shoppingpage.css"
+import Footer from "../../Components/footer/Footer";
 
 function Laidel() {
     return (
@@ -36,6 +37,7 @@ function Laidel() {
             </section>
            </div>
            </div>
+            <Footer/>
         </>
     );
 }

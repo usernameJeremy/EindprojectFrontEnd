@@ -8,8 +8,8 @@ import SignUp from "./Pages/SignUp";
 import {AuthContext} from "./Components/context/AuthContext";
 import {useContext, useEffect, useState} from "react";
 import Home from "./Pages/Home";
-import Appie from "./Pages/Winkelpagina/Appie";
-import Laidel from "./Pages/Winkelpagina/Laidel";
+import Appie from "./Pages/ShoppingsPage/Appie";
+import Laidel from "./Pages/ShoppingsPage/Laidel";
 import './index.css'
 import axios from "axios";
 

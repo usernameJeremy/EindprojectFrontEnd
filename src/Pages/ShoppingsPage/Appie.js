@@ -1,11 +1,12 @@
 import React from 'react';
-import Product from "../Product";
+import Product from "../../Components/Product/Product";
 import Broccoli from "../../asset/Broccoli.jpeg";
 import Komkommer from "../../asset/Komkommer.jpeg";
 import melk from "../../asset/melk.jpeg";
 import appie from "../../asset/Appie.jpeg"
 import NavBar from "../../Components/navbar/NavBar";
 import "../../Styles/shoppingpage.css"
+import Footer from "../../Components/footer/Footer";
 
 function Appie() {
 
@@ -38,6 +39,7 @@ function Appie() {
             </section>
                 </div>
             </div>
+            <Footer/>
         </>
     );
 }

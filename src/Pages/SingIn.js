@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Components/context/AuthContext';
 import axios from "axios";
+import Footer from "../Components/footer/Footer";
+import './../index.css'
 
 
 
@@ -11,9 +13,8 @@ import axios from "axios";
 function SignIn() {
 
     const url = "http://localhost:8080"
-    const { login } = useContext(AuthContext);
+    const { login, username ,setUsername } = useContext(AuthContext);
     const [error, setError] = useState(false);
-    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
        const signIn = async  (e) => {
@@ -44,6 +45,8 @@ function SignIn() {
 
     return (
         <>
+            <div className="outer-box">
+                <div className="inner-box">
             <h1>Inloggen</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
 
@@ -71,6 +74,10 @@ function SignIn() {
             </form>
 
             <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
+                </div>
+            </div>
+
+            <Footer/>
         </>
     );
 }

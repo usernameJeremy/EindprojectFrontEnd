@@ -11,6 +11,8 @@ function NavBar() {
     return (
 
         <nav>
+            <div className="outer-box">
+                <div className="inner-box">
             <Link className="button" to="/">
           <span className="logo-container">
 
@@ -44,6 +46,8 @@ function NavBar() {
                     </button>
                 </div>
             }
+            </div>
+            </div>
             </div>
         </nav>
 

@@ -1,23 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
 import "../Styles/Singup.css"
 import Footer from "../Components/footer/Footer";
 import '../index.css'
 
-
-
-
-// const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzYwMjc5NSwiaWF0IjoxNjcyNzM4Nzk1fQ.u_OC7W21W80HFhZyaMAonRMw1D20ENtOFB-zae_WXwo';
-
-// const authAxios = axios.create({
-//    Url: url,
-//     headers: {
-//         Authorization: `Bearer ${bearerToken}`,
-//     },
-// });
-
 function SignUp() {
+    const navigate = useNavigate()
 
 
 
@@ -48,6 +37,7 @@ function SignUp() {
                         lastName: lastName,
                         address: address
                     });
+                    navigate("/signin")
                 }
 
             } catch(e) {

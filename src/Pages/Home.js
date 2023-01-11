@@ -4,6 +4,7 @@ import Footer from "../Components/footer/Footer";
 import "../Styles/Home.css";
 import axios from "axios";
 import '../index.css'
+import Boodschaplijstje from "../Components/Boodschappenlijst/Boodschaplijstje";
 
 function Home() {
     const url = "http://localhost:8080"
@@ -42,9 +43,7 @@ function Home() {
 
                 <p className="text-home">Klik hier onder op de link van uw favoriete supermarkt</p>
             </section>
-                    <section>
-                        {/*{groceryList}//////checken of dit werkt lijst toevoegen*/}
-                    </section>
+                    <Boodschaplijstje/>
             <section className="home">
                 <Link className="button" to="/profile">Profielpagina</Link>
                 <Link className="button" to="/appie">Naar de Appie</Link>

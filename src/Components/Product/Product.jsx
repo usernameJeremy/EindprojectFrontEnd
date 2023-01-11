@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import "../Styles/Product.css"
+import "../../Styles/Product.css"
 
 
 function Product({name , weight, price, img, title }) {
