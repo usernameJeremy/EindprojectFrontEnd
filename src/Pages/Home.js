@@ -9,18 +9,9 @@ import Boodschaplijstje from "../Components/Boodschappenlijst/Boodschaplijstje";
 function Home() {
     const url = "http://localhost:8080"
     //Get request boodschappenlijstje (met link naar boodschappenlijst en wanneer er op knop acepteren geklikt word redirect naar login )
-    async function groceryList() {
-        try{
-        const getLists = await axios.get(`${url}/grocerylists`)
-
-        console.log(getLists.data[0])
 
 
-    } catch(e) {
-        console.log(e)
-    }
 
-}
 
 
 
@@ -43,7 +34,7 @@ function Home() {
 
                 <p className="text-home">Klik hier onder op de link van uw favoriete supermarkt</p>
             </section>
-                    <Boodschaplijstje/>
+
             <section className="home">
                 <Link className="button" to="/profile">Profielpagina</Link>
                 <Link className="button" to="/appie">Naar de Appie</Link>

@@ -20,7 +20,6 @@ function AuthContextProvider({ children }) {
         },
     });
 
-
     function login() {
         console.log('Gebruiker is ingelogd!');
         localStorage.setItem('token',jwToken);

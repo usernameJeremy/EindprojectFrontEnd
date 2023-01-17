@@ -12,6 +12,8 @@ import Appie from "./Pages/ShoppingsPage/Appie";
 import Laidel from "./Pages/ShoppingsPage/Laidel";
 import './index.css'
 import axios from "axios";
+import DeliveryPage from "./Pages/DeliveryPage";
+import OrderPage from "./Pages/OrderPage";
 
 
 // const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY3MzYwMjc5NSwiaWF0IjoxNjcyNzM4Nzk1fQ.u_OC7W21W80HFhZyaMAonRMw1D20ENtOFB-zae_WXwo';
@@ -39,11 +41,11 @@ function App() {
           <Routes>
                <Route path="/" element={<Home/>} />
                <Route path="/profile" element={isAuth ? <Profile/> : <Navigate to="/"/>}/>
-              {/*<Route path="/Boodschaplijstje" element={isAuth}/>*/}
-               <Route path="/appie" element={<Appie/>}/>
+              <Route path="/bezorgen" element={<DeliveryPage/> }/>
+              <Route path="/orderpage" element={<OrderPage/> }/>
                <Route path="/signin" element={<SignIn/>} />
                <Route exact path="/signup" element={<SignUp/>} />
-              <Route path="/laidel" element={<Laidel/>}/>
+
           </Routes>
 
 

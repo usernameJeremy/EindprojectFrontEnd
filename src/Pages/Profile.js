@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
-import axios from "axios";
+import {Link, useNavigate} from 'react-router-dom';
+
 import {AuthContext} from "../Components/context/AuthContext";
 import Footer from "../Components/footer/Footer";
-import Boodschaplijstje from "../Components/Boodschappenlijst/Boodschaplijstje";
 import './../index.css'
+
+
 
 
 function Profile() {
@@ -15,21 +16,22 @@ function Profile() {
 
 
 
-
+    const navigate = useNavigate();
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [address, setAddress] = useState("");
     const [data, setData] = useState("");
     const [error, setError] = useState(false);
 
+    useEffect( () => {
         async function fetchProfileData() {
 
             try {
               const data = await authAxios.get(`/accounts/${username}`);
 
-                setData(data.data);
+                setData(data);
                 console.log(data)
-                // console.log(rekening)
+
             } catch (e) {
                 console.error(e);
                 setError(true);
@@ -38,7 +40,7 @@ function Profile() {
         }
 
 
-    useEffect( () => {
+
         fetchProfileData()
 
     }, [username] )
@@ -54,15 +56,19 @@ function Profile() {
                 <p><strong>Achternaam:</strong> {data.lastName}</p>
                 <p><strong>Address:</strong> {data.address}</p>
             </section>
-            <Boodschaplijstje>
-                <h2>Boodschappenlijst</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
-                </Boodschaplijstje>
-            <section>
-                <h2>Rekeningen</h2>
-                <p>hier zou je een rekening kunnen presenteren</p>
-            </section>
             <p>Terug naar de <Link to="/">Homepagina</Link></p>
+                    <button
+                        className="button"
+                        type="button"
+                        onClick={() => navigate('/orderpage')}
+                    >Een bestelling maken </button>
+
+
+                    <button  className="button"
+                             type="button"
+                             onClick={() => navigate('/deliverypage')}
+                    >een bestelling Bezorgen</button>
+
             </div>
             </div>
             <Footer/>

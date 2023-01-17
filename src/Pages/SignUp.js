@@ -32,11 +32,12 @@ function SignUp() {
                 });
                 console.log(response)
                 if(response.status === 201){
-                    await axios.put(`${url}/accounts/${username}`, {
+                   const put = await axios.put(`${url}/accounts/${username}`, {
                         name: name,
                         lastName: lastName,
                         address: address
                     });
+                    console.log(put)
                     navigate("/signin")
                 }
 
