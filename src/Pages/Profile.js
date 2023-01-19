@@ -10,27 +10,25 @@ import './../index.css'
 
 function Profile() {
 
-//get request gegevens account
-// get reqeust rekening (alleen als berzorgverzoek is geacepteerd)
+
+
     const { isAuth, authAxios, noAuthAxios, username } = useContext(AuthContext);
-
-
-
     const navigate = useNavigate();
+
+
     const [name, setName] = useState("");
     const [lastName, setLastName] = useState("");
     const [address, setAddress] = useState("");
     const [data, setData] = useState("");
     const [error, setError] = useState(false);
+    const [lists , setLists] = useState([])
 
     useEffect( () => {
         async function fetchProfileData() {
 
             try {
               const data = await authAxios.get(`/accounts/${username}`);
-
                 setData(data);
-                console.log(data)
 
             } catch (e) {
                 console.error(e);
@@ -38,12 +36,30 @@ function Profile() {
             }
 
         }
-
-
-
         fetchProfileData()
 
     }, [username] )
+
+
+
+
+
+    useEffect(()=> {
+        async function groceryList() {
+            try {
+                const getLists = await authAxios.get(`/grocerylists`)
+                setLists(getLists.data)
+                console.log(getLists.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }   void groceryList();
+    },[]);
+
+
+
+
+
     return (
         <>
             <div className="outer-box">
@@ -56,7 +72,7 @@ function Profile() {
                 <p><strong>Achternaam:</strong> {data.lastName}</p>
                 <p><strong>Address:</strong> {data.address}</p>
             </section>
-            <p>Terug naar de <Link to="/">Homepagina</Link></p>
+
                     <button
                         className="button"
                         type="button"
@@ -70,8 +86,20 @@ function Profile() {
                     >een bestelling Bezorgen</button>
 
             </div>
+                <ul className="listbox-out">
+                    {lists.map((lijst)=>{
+                        return(
+                            <div className="listbox-in">
+                                <strong>Naam:<p>{lijst.name}</p></strong>
+                                <strong>Adres:<p>{lijst.address}</p></strong>
+                                <strong>Bezorginstructies:<p>{lijst.bezorginstructies}</p></strong>
+                                <strong>Producten: <p>{lijst.products}</p></strong>
+                                <strong>Tijdstip:<p>{lijst.dateTime}</p></strong>
+                                <strong>Status:<p>{lijst.status}</p></strong>
+                            </div>
+                        )})}
+                </ul>
             </div>
-            <Footer/>
         </>
     );
 }

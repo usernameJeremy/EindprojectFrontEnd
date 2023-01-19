@@ -4,7 +4,7 @@
 }
 .outer-box {
 
-  background-color: beige;
+  background-color: lightgoldenrodyellow;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -15,24 +15,19 @@
 }
 
 .inner-box {
-  width: 600px;
-  background-color: beige;
-  display: flex;
-  flex-direction: column;
-
-
+    width: 600px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
     /*border: 2px solid black;*/
 
-
-
 }
-
 
 .button {
 
      margin: 10px;
      appearance: none;
-     background-color: #2ea44f;
+     background-color: #6ca314;
      border: 1px solid rgba(27, 31, 35, .15);
      border-radius: 6px;
      box-shadow: rgba(27, 31, 35, .1) 0 1px 0;

@@ -1,11 +1,7 @@
 import React from 'react';
 import Boodschaplijstje from "../Components/Boodschappenlijst/Boodschaplijstje";
 
-function OrderPage(props) {
-
-    //post
-    //aanmaken boodschappenlijst
-
+function OrderPage() {
 
     return (
         <div>

@@ -32,12 +32,12 @@ function SignUp() {
                 });
                 console.log(response)
                 if(response.status === 201){
-                   const put = await axios.put(`${url}/accounts/${username}`, {
+                    await axios.put(`${url}/accounts/${username}`, {
                         name: name,
                         lastName: lastName,
                         address: address
                     });
-                    console.log(put)
+
                     navigate("/signin")
                 }
 
@@ -136,7 +136,6 @@ function SignUp() {
 
                 </div>
             </div>
-            <Footer/>
         </>
     );
 }

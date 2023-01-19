@@ -1,14 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
-import Footer from "../Components/footer/Footer";
 import "../Styles/Home.css";
-import axios from "axios";
 import '../index.css'
-import Boodschaplijstje from "../Components/Boodschappenlijst/Boodschaplijstje";
+import {AuthContext} from "../Components/context/AuthContext";
 
 function Home() {
-    const url = "http://localhost:8080"
-    //Get request boodschappenlijstje (met link naar boodschappenlijst en wanneer er op knop acepteren geklikt word redirect naar login )
+    const { isAuth } = useContext(AuthContext);
+
 
 
 
@@ -32,20 +30,17 @@ function Home() {
 
                 <p className="text-home">Zij die boodschappen willen ontvangen kunnen aangeven welke boodschappen ze willen! Vervolgens komt er iemand deze boodschappen leveren aan uw huis! </p>
 
-                <p className="text-home">Klik hier onder op de link van uw favoriete supermarkt</p>
+
             </section>
 
             <section className="home">
-                <Link className="button" to="/profile">Profielpagina</Link>
-                <Link className="button" to="/appie">Naar de Appie</Link>
-                <Link className="button" to="/laidel">Naar de Laidel</Link>
-                <p>Je kunt ook <Link to="/signin">inloggen</Link> of jezelf <Link to="/signup">registeren</Link> als je nog geen
-                    account hebt.</p>
+                {!isAuth ? <p>Je kunt ook <Link className="button" to="/signin">inloggen</Link> of jezelf <Link className="button" to="/signup">registeren</Link> als je nog geen
+                    account hebt.</p>: <p></p>}
+                {isAuth ? <Link className="button" to="/profile" >Profiel Pagina </Link> : <p></p>}
+                {isAuth ? <p><Link className="button" to="/deliverypage">Bestelling bezorgen</Link> of <Link to="/orderpage" className="button">Bestelling plaatsen</Link> </p>: <p></p>}
             </section>
                 </div>
             </div>
-
-            <Footer/>
         </>
     );
 }

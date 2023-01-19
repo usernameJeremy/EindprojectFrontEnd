@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../Components/context/AuthContext';
 import axios from "axios";
 import Footer from "../Components/footer/Footer";
@@ -11,7 +11,7 @@ import './../index.css'
 
 
 function SignIn() {
-
+    const navigate = useNavigate();
     const url = "http://localhost:8080"
     const { login, username ,setUsername } = useContext(AuthContext);
     const [error, setError] = useState(false);
@@ -26,17 +26,14 @@ function SignIn() {
                     password: password
                 });
                 if (response.status === 200){
-                    console.log(response)
                     localStorage.setItem('token', response.data.jwt);
                     login();
+                    navigate("/profile")
                 }
-
             } catch(e) {
                 console.error(e);
                 setError(true);
             }
-
-
         }
     function handleSubmit(e) {
         e.preventDefault();
@@ -76,8 +73,6 @@ function SignIn() {
             <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
                 </div>
             </div>
-
-            <Footer/>
         </>
     );
 }

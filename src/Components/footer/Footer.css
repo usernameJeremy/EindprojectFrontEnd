@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.inner-box{
+    flex-direction: row;
+    align-items: center;
+    padding: 25px;
+
+}
+
+.needpaddingright{
+    padding-right: 25px;
+    text-decoration-line: none;
+}
+

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import "../../Styles/Navbar.css"
+import "./Navbar.css"
 import '../../index.css'
 
 function NavBar() {
@@ -13,44 +13,30 @@ function NavBar() {
         <nav>
             <div className="outer-box">
                 <div className="inner-box">
-            <Link className="button" to="/">
-          <span className="logo-container">
-
-            <h3>
-              Boodschap bezorg app
-            </h3>
-          </span>
-            </Link>
-
-            <div className="navButton">
             {isAuth ?
                 <button className="button"
                     type="button"
                     onClick={logout}
-                >
-                    Log uit
+                >Log uit
                 </button>
                 :
                 <div>
                     <button className="button"
                         type="button"
                         onClick={() => navigate('/signin')}
-                    >
-                        Log in
+                    >Log in
                     </button>
+
                     <button className="button"
                         type="button"
                         onClick={() => navigate('/signup')}
-                    >
-                        Registreren
+                    >Registreren
                     </button>
                 </div>
             }
-            </div>
-            </div>
+                </div>
             </div>
         </nav>
-
     );
 }
 
