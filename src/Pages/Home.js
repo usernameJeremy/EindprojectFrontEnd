@@ -1,35 +1,29 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import "../Styles/Home.css";
-import '../index.css'
-import {AuthContext} from "../Components/context/AuthContext";
+import '../App.css'
+import {AuthContext} from "../context/AuthContext";
 
 function Home() {
     const { isAuth } = useContext(AuthContext);
-
-
-
-
-
-
-
-
 
     return (
         <>
             <div className="outer-box">
                 <div className="inner-box">
+                    <div className="text-padding">
             <div className="home">
             <h1>Boodschap Bezorg App</h1>
             </div>
             <section className="home">
-                <p className="text-home" >Welkom,</p>
+
+                <p className="text-home">Welkom,</p>
                 <p className="text-home">wilt u nu ook eens wat meer vrije tijd hebben? Is er bij u ook nooit een parkeerplek vrij als u boodschappen gaat doen?  </p>
 
                 <p className="text-home">Hier is dan eindelijk de oplossing namelijk de boodschap en bezorg app 😁👌 Ontworpen in de Buurt en voor de Buurt.  </p>
 
-                <p className="text-home">Zij die boodschappen willen ontvangen kunnen aangeven welke boodschappen ze willen! Vervolgens komt er iemand deze boodschappen leveren aan uw huis! </p>
-
+                <p className="text-home">Zij die boodschappen willen ontvangen kunnen aangeven welke boodschappen ze willen!</p>
+                <p className="text-home"> Vervolgens komt er iemand deze boodschappen leveren aan uw huis! </p>
 
             </section>
 
@@ -40,6 +34,7 @@ function Home() {
                 {isAuth ? <p><Link className="button" to="/deliverypage">Bestelling bezorgen</Link> of <Link to="/orderpage" className="button">Bestelling plaatsen</Link> </p>: <p></p>}
             </section>
                 </div>
+            </div>
             </div>
         </>
     );

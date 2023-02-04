@@ -2,5 +2,19 @@
     margin: 0;
     padding: 0;
 }
+.outer-box-navbar {
 
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid purple;
+}
+
+.inner-box-navbar {
+    width: 1000px;
+    background-color: rgba(211, 211, 211, 0.44);
+    border: 2px solid black;
+}
 

@@ -64,8 +64,9 @@ function AuthContextProvider({ children }) {
         username,
         setUsername,
         isAuth: isAuth,
-        login: login,
-        logout: logout,
+        login,
+        logout,
+        jwToken
     };
 
     return (

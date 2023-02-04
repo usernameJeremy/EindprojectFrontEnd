@@ -1,14 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import { AuthContext } from '../Components/context/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 import axios from "axios";
-import Footer from "../Components/footer/Footer";
-import './../index.css'
-
-
-
-
-
+import '../App.css'
 
 function SignIn() {
     const navigate = useNavigate();
@@ -44,8 +38,8 @@ function SignIn() {
         <>
             <div className="outer-box">
                 <div className="inner-box">
+                    <div className="text-padding">
             <h1>Inloggen</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
 
             <form onSubmit={handleSubmit}>
                 <section>
@@ -71,6 +65,7 @@ function SignIn() {
             </form>
 
             <p>Heb je nog geen account? <Link to="/signup">Registreer</Link> je dan eerst.</p>
+                    </div>
                 </div>
             </div>
         </>

@@ -3,15 +3,28 @@
     margin: 0;
 }
 
-.inner-box{
-    flex-direction: row;
-    align-items: center;
-    padding: 25px;
+.footer-box{
+    display: flex;
+    justify-content: center;
 
 }
-
-.needpaddingright{
-    padding-right: 25px;
+.external-link{
     text-decoration-line: none;
 }
+.outer-box-footer {
+
+    background-color: lightgoldenrodyellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid purple;
+}
+
+.inner-box-footer {
+    width: 1000px;
+    background-color: rgba(211, 211, 211, 0.44);
+    border: 2px solid black;
+}
+
 

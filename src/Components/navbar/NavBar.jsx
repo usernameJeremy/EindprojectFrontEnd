@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import "./Navbar.css"
-import '../../index.css'
+import '../../App.css'
+import Buttons from "../Buttons/Buttons";
 
 function NavBar() {
     const { isAuth, logout } = useContext(AuthContext);
@@ -11,27 +12,54 @@ function NavBar() {
     return (
 
         <nav>
-            <div className="outer-box">
-                <div className="inner-box">
+            <div className="outer-box-navbar">
+                <div className="inner-box-navbar">
+                    {isAuth ?    <Buttons className="button"
+                                         type="button"
+                                         clickHandler={() => navigate('/profile')}
+                    >Profiel
+                    </Buttons>  : <></>}
+                    {isAuth ?  <Buttons className="button"
+                                        type="button"
+                                        clickHandler={() => navigate('/')}
+                    >Home
+                    </Buttons>: <p></p>}
+
+                    {isAuth  ? <Buttons className="button"
+                                       type="button"
+                                        clickHandler={() => navigate('/orderpage')}
+                    >Bestelling maken
+                    </Buttons> : <p></p>}
+                    {isAuth  ? <Buttons className="button"
+                                       type="button"
+                                        clickHandler={() => navigate('/deliverypage')}
+                    >Bestelling bezorgen
+                    </Buttons> : <p></p>}
+
             {isAuth ?
-                <button className="button"
+                <Buttons className="button"
                     type="button"
-                    onClick={logout}
+                         clickHandler={logout}
                 >Log uit
-                </button>
+                </Buttons>
                 :
                 <div>
-                    <button className="button"
+                    <Buttons className="button"
                         type="button"
-                        onClick={() => navigate('/signin')}
+                             clickHandler={() => navigate('/signin')}
                     >Log in
-                    </button>
+                    </Buttons>
 
-                    <button className="button"
+                    <Buttons className="button"
                         type="button"
-                        onClick={() => navigate('/signup')}
+                            clickHandler={() => navigate('/signup')}
                     >Registreren
-                    </button>
+                    </Buttons>
+                    <Buttons className="button"
+                             type="button"
+                             clickHandler={() => navigate('/')}
+                    >Home
+                    </Buttons>
                 </div>
             }
                 </div>

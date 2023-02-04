@@ -1,17 +1,18 @@
 import React from 'react';
 import { ExternalLink } from 'react-external-link';
-import './../../index.css'
-import {Link} from "react-router-dom";
+import './../../App.css'
 import './Footer.css'
 
 
 function Footer() {
     return (
         <>
-            <div className="outer-box">
-                <div className="inner-box">
-                    <Link className="needpaddingright"  to="/" >Homepage</Link> <p >Created by <ExternalLink className="needpaddingright" href="https://github.com/usernameJeremy" >Jeremy Koster.</ExternalLink></p>
-                </div>
+            <div className="outer-box-footer">
+                <div className="inner-box-footer">
+                    <div className="footer-box">
+                     <p >Created by <ExternalLink className="external-link" href="https://github.com/usernameJeremy" >Jeremy Koster.</ExternalLink></p>
+                    </div>
+                    </div>
             </div>
         </>
     );

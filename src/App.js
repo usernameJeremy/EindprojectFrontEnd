@@ -2,9 +2,9 @@ import './App.css';
 import {Navigate, Route, Routes} from "react-router-dom";
 import Profile from "./Pages/Profile";
 import NavBar from "./Components/navbar/NavBar";
-import SignIn from "./Pages/SingIn";
+import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
-import {AuthContext} from "./Components/context/AuthContext";
+import {AuthContext} from "./context/AuthContext";
 import {useContext} from "react";
 import Home from "./Pages/Home";
 import './index.css'

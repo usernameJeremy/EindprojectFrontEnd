@@ -1,13 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
-import "../Styles/Singup.css"
-import Footer from "../Components/footer/Footer";
-import '../index.css'
+import '../App.css'
+import Buttons from "../Components/Buttons/Buttons";
 
 function SignUp() {
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
 
 
     const url = "http://localhost:8080"
@@ -19,9 +18,12 @@ function SignUp() {
     const [name, setName] = useState('');
     const [lastName, setLastname] = useState('');
     const [address, setAddress] = useState('');
+    const [file, setFile]= useState("")
+    const [previewUrl, setPreviewUrl]=useState("");
 
-        async function Registreer() {
 
+        async function Registreer(e) {
+            e.preventDefault();
             try {
                 const response = await axios.post(`${url}/users`, {
                     username: username,
@@ -32,19 +34,41 @@ function SignUp() {
                 });
                 console.log(response)
                 if(response.status === 201){
-                    await axios.put(`${url}/accounts/${username}`, {
+                   const response2 =  await axios.put(`${url}/accounts/${username}`, {
                         name: name,
                         lastName: lastName,
                         address: address
                     });
-
+                    if (response2.status === 200){
+                        console.log("ik ben nu door de 200 status")
+                        void UploadProfilePicture()
+                    }
                     navigate("/signin")
                 }
-
             } catch(e) {
                 console.error(e);
             }
         }
+    const UploadProfilePicture = async () => {
+        const formData = new FormData();
+        formData.append("file", file)
+        try{
+            const response = await axios.post(`http://localhost:8080/accounts/${username}/upload`, formData,
+                {
+                    headers:{
+                        "Content-Type": "multipart/form-data"
+                    },
+                })
+            console.log("ik ben verstuurd ?")
+        }catch (e){
+            if (axios.isCancel(e)){
+                console.log("je word gecanceld")
+            }else {
+                console.error(e)
+            }
+
+        }
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -56,15 +80,21 @@ function SignUp() {
      name: ${name},
     lastName: ${lastName}
     address: ${address}
+    
     `);
     }
+    function HandleFileChange(e)
+    {    const uploadedFile = e.target.files[0]
+        console.log(uploadedFile)
+        setFile(uploadedFile)
+        setPreviewUrl(URL.createObjectURL(uploadedFile));}
 
 
     return (
         <>
-
             <div className="outer-box">
                 <div className="inner-box">
+                    <div className="text-padding">
             <h1 className="register">Registreren</h1>
             <p className="register">Wilt u ook gebruik maken van die handige Boodschappen bezorg app? Registreer uzelf nu!! </p>
             <form className="register" onSubmit={handleSubmit}>
@@ -78,7 +108,6 @@ function SignUp() {
                         onChange={(e) => setUsername(e.target.value)}
                     />
                 </section>
-
                 <section className="register">
                     <label htmlFor="lastname-field">password</label>
                     <input
@@ -129,11 +158,23 @@ function SignUp() {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </section>
+                <div className="img-row">
+                <table>
+                    <tr>
+                        <td>ProfilePicture to upload:</td>
+                        <td><input
+                            onChange={HandleFileChange} type="file" name="file" accept="image.*"/></td>
+                    </tr>
+                </table>
+                {previewUrl && <label className="preview-box" >Preview:
+                    <img src={previewUrl} alt="Voorbeeld van de afbeelding die zojuist gekozen is" className="image-preview"/>
+                </label>}
+                </div>
+                <Buttons className="button" type="submit" clickHandler={Registreer}>Registreren</Buttons>
 
-                <button className="button" type="submit" onClick={Registreer}>Registreren</button>
             </form>
             <p className="register">Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
-
+                    </div>
                 </div>
             </div>
         </>
