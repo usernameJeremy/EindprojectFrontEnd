@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import "./Navbar.css"
 import '../../App.css'
-import Buttons from "../Buttons/Buttons";
+import Buttons from "../buttons/Buttons";
 
 function NavBar() {
     const { isAuth, logout } = useContext(AuthContext);

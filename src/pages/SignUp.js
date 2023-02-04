@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
 import '../App.css'
-import Buttons from "../Components/Buttons/Buttons";
+import Buttons from "../components/buttons/Buttons";
 
 function SignUp() {
 

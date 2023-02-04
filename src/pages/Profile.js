@@ -2,7 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext";
 import '../App.css'
-import Buttons from "../Components/Buttons/Buttons";
+import Buttons from "../components/buttons/Buttons";
 
 function Profile() {
 

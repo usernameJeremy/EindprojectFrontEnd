@@ -1,16 +1,16 @@
 import './App.css';
 import {Navigate, Route, Routes} from "react-router-dom";
-import Profile from "./Pages/Profile";
-import NavBar from "./Components/navbar/NavBar";
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
+import Profile from "./pages/Profile";
+import NavBar from "./components/navbar/NavBar";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import {AuthContext} from "./context/AuthContext";
 import {useContext} from "react";
-import Home from "./Pages/Home";
+import Home from "./pages/Home";
 import './index.css'
-import DeliveryPage from "./Pages/DeliveryPage";
-import OrderPage from "./Pages/OrderPage";
-import Footer from "./Components/footer/Footer";
+import DeliveryPage from "./pages/DeliveryPage";
+import OrderPage from "./pages/OrderPage";
+import Footer from "./components/footer/Footer";
 
 function App() {
     const { isAuth } = useContext(AuthContext);
